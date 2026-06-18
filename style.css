@@ -1,0 +1,889 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   StutterSense – Clinical AI Platform
+   Stylesheet  |  style.css
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design Tokens ────────────────────────────────────────────────────────── */
+:root {
+  --bg-primary:   #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card:      #1c2128;
+  --accent:       #7c3aed;
+  --accent-light: #a78bfa;
+  --green:        #10b981;
+  --red:          #ef4444;
+  --amber:        #f59e0b;
+  --blue:         #3b82f6;
+  --text-primary: #e6edf3;
+  --text-muted:   #8b949e;
+  --border:       #30363d;
+}
+
+/* ── Streamlit Chrome — hide menu & footer ───────────────────── */
+#MainMenu, 
+[data-testid="stAppDeployButton"],
+footer {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+
+
+/* ── Base / Layout ────────────────────────────────────────────────────────── */
+html,
+body,
+[data-testid="stAppViewContainer"] {
+    background-color: var(--bg-primary) !important;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #13001f 0%, #0d1117 100%) !important;
+    border-right: 1px solid var(--border);
+}
+
+[data-testid="stSidebar"] * {
+    color: var(--text-primary) !important;
+}
+
+.sidebar-logo {
+    text-align: center;
+    padding: 1rem 0 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-logo h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #a78bfa;
+    margin: 0;
+}
+
+.sidebar-logo p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin: 0;
+    letter-spacing: 0.1em;
+}
+
+/* ── Buttons — all states forced consistent ───────────────────────────────── */
+div.stButton > button,
+div.stButton > button:focus,
+div.stButton > button:active,
+div.stButton > button:visited,
+div.stButton > button:focus-visible {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+    color: white !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 10px !important;
+    padding: 0.55rem 1.4rem !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.35) !important;
+    width: 100%;
+}
+
+div.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.55) !important;
+    background: linear-gradient(135deg, #8b4fff, #5b52f5) !important;
+}
+
+/* ── Metric Cards ─────────────────────────────────────────────────────────── */
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-light);
+}
+
+.metric-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ── Section Headers ──────────────────────────────────────────────────────── */
+.section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+/* ── Event Badges ─────────────────────────────────────────────────────────── */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-prolongation {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border: 1px solid #3b82f6;
+}
+
+.badge-block {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid #ef4444;
+}
+
+.badge-soundrep {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid #f59e0b;
+}
+
+.badge-wordrep {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid #10b981;
+}
+
+.badge-nostutter {
+    background: rgba(139, 92, 246, 0.2);
+    color: #a78bfa;
+    border: 1px solid #8b5cf6;
+}
+
+/* ── Clinical Report Box ──────────────────────────────────────────────────── */
+.report-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    overflow-x: auto;
+}
+
+/* The <pre> inside report-box must NOT pick up the broad pre rule;
+   it needs transparent bg, zero extra padding, and preserved spacing. */
+.report-box pre.report-pre {
+    background:    transparent !important;
+    border:        none !important;
+    border-radius: 0 !important;
+    padding:       0 !important;
+    margin:        0 !important;
+    font-family:   'JetBrains Mono', 'Courier New', monospace !important;
+    font-size:     0.82rem !important;
+    line-height:   1.9 !important;
+    white-space:   pre !important;   /* keeps sklearn's space-aligned columns */
+    color:         var(--text-primary) !important;
+    overflow-x:    auto !important;
+}
+
+/* ── DataFrames / Tables ──────────────────────────────────────────────────── */
+[data-testid="stDataFrame"],
+[data-testid="stDataFrame"] > div,
+[data-testid="stDataFrame"] iframe {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+}
+
+/* Arrow table header and cells */
+.stDataFrame td,
+.stDataFrame th,
+[data-testid="stDataFrame"] td,
+[data-testid="stDataFrame"] th {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-card) !important;
+    border-color: var(--border) !important;
+}
+
+/* Glide-data-grid (Streamlit's table renderer) background overrides */
+[data-testid="stDataFrame"] canvas {
+    background-color: var(--bg-card) !important;
+}
+
+/* Scrollbar inside dataframes */
+[data-testid="stDataFrame"] ::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    background: var(--bg-secondary);
+}
+[data-testid="stDataFrame"] ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+/* ── Progress Bar ─────────────────────────────────────────────────────────── */
+.stProgress > div > div > div {
+    background: linear-gradient(90deg, #7c3aed, #3b82f6) !important;
+}
+
+/* ── Spinner ──────────────────────────────────────────────────────────────── */
+.stSpinner > div {
+    border-top-color: #7c3aed !important;
+}
+
+/* ── Alerts ───────────────────────────────────────────────────────────────── */
+.stAlert {
+    border-radius: 10px !important;
+}
+
+/* ── Notifications (dark mode) ────────────────────────────────────────────── */
+[data-testid="stNotification"] {
+    background: var(--bg-card) !important;
+}
+
+/* ── Code blocks — dark theme, no phantom hover box ──────────────────────── */
+
+/* Outer stCode wrapper: owns the border + clips everything inside */
+[data-testid="stCode"] {
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;    /* clips copy-button overlay — no extra box */
+    background-color: #161b22 !important;
+}
+
+/* IMPORTANT: do NOT style [data-testid="stCode"] > div individually —
+   Streamlit injects a second child div on hover for the copy overlay,
+   and giving it a border causes the "phantom extra box" below the block. */
+
+/* Inner pre / code: dark bg, light monospace text */
+[data-testid="stCode"] pre,
+[data-testid="stCode"] code,
+[data-testid="stMarkdownContainer"] pre,
+pre {
+    background-color: #161b22 !important;
+    color: #c9d1d9 !important;
+    border: none !important;        /* border is already on the outer wrapper */
+    border-radius: 0 !important;
+    overflow-x: auto !important;
+    padding: 1rem 1.4rem !important;
+    margin: 0 !important;
+    font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+    font-size: 0.83rem !important;
+    line-height: 1.65 !important;
+    white-space: pre !important;    /* preserves ASCII art alignment */
+    tab-size: 4 !important;
+}
+
+/* Inline code spans inside markdown */
+[data-testid="stMarkdownContainer"] code:not(pre code) {
+    background-color: rgba(110, 118, 129, 0.15) !important;
+    color: #c9d1d9 !important;
+    border-radius: 4px !important;
+    padding: 0.1em 0.35em !important;
+    font-size: 0.88em !important;
+    border: none !important;
+}
+
+/* Token colours */
+[data-testid="stCode"] pre span,
+[data-testid="stMarkdownContainer"] pre span,
+pre span {
+    color: #c9d1d9 !important;
+}
+
+/* ── System Architecture diagram (custom pre, not st.code()) ─────────────── */
+pre.arch-diagram {
+    background-color: #161b22 !important;
+    color: #c9d1d9 !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    padding: 1.2rem 1.5rem !important;
+    margin: 0 !important;
+    font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+    font-size: 0.83rem !important;
+    line-height: 1.9 !important;
+    /* Uses <br> tags for line breaks, not \n, so white-space: normal */
+    white-space: normal !important;
+    overflow-x: auto !important;
+    /* No hover artifacts — plain HTML, no Streamlit copy toolbar */
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   HOME PAGE — Hero Banner
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Hero Banner ──────────────────────────────────────────────────────────── */
+.hero-banner {
+    position: relative;
+    background: linear-gradient(135deg, #0d0521 0%, #130a2e 40%, #0a1628 100%);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: 20px;
+    padding: 3.5rem 3rem 3rem 3rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+/* Glowing background orbs */
+.hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: orb-float 8s ease-in-out infinite;
+}
+
+.hero-orb-1 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, #7c3aed, transparent);
+    top: -120px; left: -80px;
+    animation-delay: 0s;
+}
+
+.hero-orb-2 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, #3b82f6, transparent);
+    top: -60px; right: 100px;
+    animation-delay: 2.5s;
+}
+
+.hero-orb-3 {
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, #10b981, transparent);
+    bottom: -80px; right: -60px;
+    animation-delay: 5s;
+}
+
+@keyframes orb-float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50%       { transform: translateY(-20px) scale(1.05); }
+}
+
+/* Hero content sits above orbs */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(124, 58, 237, 0.2);
+    border: 1px solid rgba(124, 58, 237, 0.5);
+    color: #c4b5fd;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin: 0 0 0.4rem 0;
+    background: linear-gradient(100deg, #ffffff 0%, #c4b5fd 40%, #60a5fa 70%, #34d399 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #c4b5fd;
+    margin: 0 0 1rem 0;
+    letter-spacing: 0.01em;
+}
+
+.hero-desc {
+    font-size: 1rem;
+    color: #8b949e;
+    max-width: 640px;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+}
+
+/* ── Hero Pills ───────────────────────────────────────────────────────────── */
+.hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.hero-pill {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #e6edf3;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.hero-pill:hover {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: rgba(124, 58, 237, 0.5);
+    color: #c4b5fd;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   HOME PAGE — Status Bar
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.status-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.9rem 1.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.status-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.status-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1;   transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   HOME PAGE — Navigation Cards
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.nav-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.6rem 1.4rem 1.2rem 1.4rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.28s cubic-bezier(.22,.68,0,1.2),
+                border-color 0.25s ease,
+                box-shadow 0.28s ease;
+    margin-bottom: 0.5rem;
+    /* Fixed height so all 4 cards are always equal */
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.nav-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--card-c1, #7c3aed);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px var(--card-c1, #7c3aed),
+                inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* Glowing top bar on hover */
+.nav-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--card-c1, #7c3aed), var(--card-c2, #4f46e5));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    border-radius: 16px 16px 0 0;
+}
+
+.nav-card:hover::before {
+    opacity: 1;
+}
+
+/* Radial glow that follows the card colour */
+.nav-card-glow {
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, var(--card-c1, #7c3aed) 0%, transparent 70%);
+    opacity: 0;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.nav-card:hover .nav-card-glow {
+    opacity: 0.15;
+}
+
+.nav-icon {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+.nav-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.nav-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    /* Takes all remaining space, pushing tags+arrow to the bottom */
+    flex: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.nav-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.3rem;
+}
+
+.nav-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.18rem 0.55rem;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+}
+
+.nav-arrow {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    align-self: flex-end;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-card:hover .nav-arrow {
+    transform: translateX(4px);
+    color: var(--card-c1, #a78bfa);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   GLOBAL RESPONSIVE UTILITIES
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* Make Streamlit's main content column full-width and fluid */
+[data-testid="stMainBlockContainer"] {
+    max-width: 100% !important;
+    padding-left: clamp(0.75rem, 3vw, 3rem) !important;
+    padding-right: clamp(0.75rem, 3vw, 3rem) !important;
+}
+
+/* Smooth global box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Global scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   BREAKPOINT: LARGE DESKTOP  ≥ 1400px
+   ══════════════════════════════════════════════════════════════════════════════ */
+@media (min-width: 1400px) {
+    .hero-title    { font-size: 4.2rem; }
+    .hero-subtitle { font-size: 1.35rem; }
+    .hero-desc     { font-size: 1.05rem; max-width: 720px; }
+    .hero-banner   { padding: 4rem 4rem 3.5rem 4rem; }
+    .nav-card      { height: 270px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   BREAKPOINT: TABLET  640px – 1023px
+   ══════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+
+    /* ── Hero banner ───────────────────────────────────────────────────────── */
+    .hero-banner {
+        padding: 2.5rem 2rem 2.2rem 2rem;
+        border-radius: 16px;
+    }
+
+    .hero-title    { font-size: 2.8rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .hero-desc     { font-size: 0.95rem; }
+
+    /* Shrink orbs so they don't overflow on smaller screens */
+    .hero-orb-1 { width: 280px; height: 280px; }
+    .hero-orb-2 { width: 220px; height: 220px; }
+    .hero-orb-3 { width: 180px; height: 180px; }
+
+    /* ── Status bar ────────────────────────────────────────────────────────── */
+    .status-bar {
+        row-gap: 0.6rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .status-item  { padding: 0 0.6rem; }
+    .status-label { font-size: 0.72rem; }
+    .status-value { font-size: 0.8rem; }
+
+    /* ── Nav cards — 2 columns on tablet ──────────────────────────────────── */
+    /* Streamlit renders columns natively; these override the card internals */
+    .nav-card {
+        height: auto;
+        min-height: 210px;
+    }
+
+    .nav-icon  { font-size: 1.9rem; }
+    .nav-title { font-size: 0.98rem; }
+    .nav-desc  { font-size: 0.78rem; -webkit-line-clamp: 4; line-clamp: 4; }
+    .nav-tag   { font-size: 0.65rem; }
+
+    /* ── Metric / stat cards ───────────────────────────────────────────────── */
+    .metric-card  { padding: 1rem; }
+    .metric-value { font-size: 1.7rem; }
+
+    /* ── Section title ─────────────────────────────────────────────────────── */
+    .section-title { font-size: 1.2rem; }
+
+    /* ── Report box ─────────────────────────────────────────────────────────── */
+    .report-box { font-size: 0.78rem; padding: 1.1rem; }
+
+    /* ── Sidebar logo ───────────────────────────────────────────────────────── */
+    .sidebar-logo h1 { font-size: 1.2rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   BREAKPOINT: MOBILE  ≤ 639px
+   ══════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 639px) {
+
+    /* ── Main container — zero side padding on very small screens ─────────── */
+    [data-testid="stMainBlockContainer"] {
+        padding-left: 0.6rem !important;
+        padding-right: 0.6rem !important;
+        padding-top: 0.75rem !important;
+    }
+
+    /* ── Hero banner ───────────────────────────────────────────────────────── */
+    .hero-banner {
+        padding: 1.8rem 1.2rem 1.5rem 1.2rem;
+        border-radius: 14px;
+        margin-bottom: 1rem;
+    }
+
+    .hero-badge    { font-size: 0.68rem; padding: 0.25rem 0.7rem; }
+    .hero-title    { font-size: 2rem; letter-spacing: -0.02em; }
+    .hero-subtitle { font-size: 0.95rem; margin-bottom: 0.7rem; }
+    .hero-desc     { font-size: 0.88rem; max-width: 100%; line-height: 1.6; }
+
+    /* Reduce orbs so they don't cause overflow */
+    .hero-orb-1 { width: 200px; height: 200px; top: -60px; left: -50px; }
+    .hero-orb-2 { width: 160px; height: 160px; top: -40px; right: 20px; }
+    .hero-orb-3 { width: 130px; height: 130px; bottom: -50px; right: -30px; }
+
+    /* Pills: make them smaller and wrappable */
+    .hero-pills { gap: 0.4rem; }
+    .hero-pill  {
+        font-size: 0.75rem;
+        padding: 0.28rem 0.65rem;
+    }
+
+    /* ── Status bar — stack to 2-per-row grid ──────────────────────────────── */
+    .status-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        padding: 0.75rem;
+        border-radius: 10px;
+    }
+
+    .status-item    { padding: 0 0.4rem; }
+    .status-divider { display: none; }   /* hide vertical dividers on mobile */
+    .status-label   { font-size: 0.68rem; }
+    .status-value   { font-size: 0.78rem; }
+
+    /* ── Nav cards — full width stack ─────────────────────────────────────── */
+    .nav-card {
+        height: auto;
+        min-height: 180px;
+        padding: 1.2rem 1rem 1rem 1rem;
+        border-radius: 12px;
+        margin-bottom: 0.6rem;
+    }
+
+    /* Disable hover lift on touch — feels glitchy */
+    .nav-card:hover { transform: none; }
+
+    .nav-icon  { font-size: 1.7rem; }
+    .nav-title { font-size: 0.95rem; }
+    .nav-desc  {
+        font-size: 0.77rem;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+    .nav-tag   { font-size: 0.63rem; padding: 0.14rem 0.45rem; }
+    .nav-arrow { font-size: 0.95rem; }
+
+    /* ── Buttons — larger tap target ────────────────────────────────────────── */
+    div.stButton > button,
+    div.stButton > button:focus,
+    div.stButton > button:active,
+    div.stButton > button:visited {
+        padding: 0.65rem 1rem !important;
+        font-size: 0.85rem !important;
+        border-radius: 8px !important;
+    }
+
+    /* ── Metric / stat cards ────────────────────────────────────────────────── */
+    .metric-card {
+        padding: 0.85rem 1rem;
+        border-radius: 10px;
+    }
+    .metric-value { font-size: 1.5rem; }
+    .metric-label { font-size: 0.72rem; }
+
+    /* ── Section titles ─────────────────────────────────────────────────────── */
+    .section-title { font-size: 1.05rem; margin-bottom: 0.75rem; }
+
+    /* ── Report box ─────────────────────────────────────────────────────────── */
+    .report-box {
+        font-size: 0.73rem;
+        padding: 0.9rem;
+        line-height: 1.7;
+    }
+
+    /* ── Code blocks ─────────────────────────────────────────────────────────── */
+    [data-testid="stCode"],
+    pre, pre code {
+        font-size: 0.75rem !important;
+        padding: 0.75rem !important;
+    }
+
+    /* ── Badge pills ─────────────────────────────────────────────────────────── */
+    .badge { font-size: 0.68rem; padding: 2px 8px; }
+
+    /* ── Tables — horizontal scroll on mobile ──────────────────────────────── */
+    [data-testid="stDataFrame"] {
+        overflow-x: auto !important;
+    }
+
+    /* ── Sidebar adjustments when open on mobile ────────────────────────────── */
+    [data-testid="stSidebar"] {
+        width: min(280px, 85vw) !important;
+    }
+
+    .sidebar-logo      { padding: 0.75rem 0 1rem 0; }
+    .sidebar-logo h1   { font-size: 1.1rem; }
+    .sidebar-logo p    { font-size: 0.65rem; }
+
+    /* ── Tab labels — smaller on mobile ────────────────────────────────────── */
+    [data-testid="stTabs"] button[role="tab"] {
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.8rem !important;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   BREAKPOINT: VERY SMALL PHONES  ≤ 380px
+   ══════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 380px) {
+    .hero-title    { font-size: 1.7rem; }
+    .hero-subtitle { font-size: 0.88rem; }
+    .hero-badge    { font-size: 0.62rem; letter-spacing: 0.05em; }
+
+    .status-bar {
+        grid-template-columns: 1fr;   /* single column on tiny phones */
+    }
+
+    .hero-pills { gap: 0.3rem; }
+    .hero-pill  { font-size: 0.7rem; padding: 0.22rem 0.55rem; }
+
+    .nav-card    { padding: 1rem 0.85rem 0.85rem 0.85rem; min-height: 160px; }
+    .nav-icon    { font-size: 1.5rem; }
+    .nav-title   { font-size: 0.9rem; }
+    .metric-card { padding: 0.75rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   TOUCH DEVICE IMPROVEMENTS
+   ══════════════════════════════════════════════════════════════════════════════ */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects that feel broken on touch */
+    .nav-card:hover          { transform: none; box-shadow: none; border-color: var(--border); }
+    .nav-card:hover::before  { opacity: 0; }
+    .metric-card:hover       { transform: none; }
+    div.stButton > button:hover {
+        transform: none !important;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.35) !important;
+    }
+
+    /* Add active (pressed) feedback for touch */
+    .nav-card:active {
+        transform: scale(0.98);
+        border-color: var(--accent);
+    }
+    div.stButton > button:active {
+        transform: scale(0.97) !important;
+        box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4) !important;
+    }
+
+    /* Increase tap targets */
+    div.stButton > button {
+        min-height: 44px !important;
+    }
+}

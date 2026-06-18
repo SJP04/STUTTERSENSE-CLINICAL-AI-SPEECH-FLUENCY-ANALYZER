@@ -1,0 +1,33 @@
+﻿# Audio files
+*.wav
+*.mp3
+*.flac
+uclass_audio/
+
+# Large Dataset folders and CSV files
+sep28k_wavs/
+sep28k_mfcc/
+sep28k-mfcc.csv
+SEP-28k_labels.csv
+uclass_processed.csv
+
+# Model and tensor files
+*.h5
+*.keras
+*.pkl
+*.npz
+
+# Large output and models
+stuttersense_output/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+env/
+
+# IDE
+.vscode/

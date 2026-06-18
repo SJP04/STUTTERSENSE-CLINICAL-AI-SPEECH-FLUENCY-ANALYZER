@@ -1,0 +1,11 @@
+pandas
+numpy
+matplotlib
+librosa
+tensorflow
+scikit-learn
+streamlit>=1.31.0
+soundfile
+imbalanced-learn
+seaborn
+flask
